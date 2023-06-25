@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "数据展示";
+}
+
+<h1>数据展示</h1>
+<div style="width:100%;overflow:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:25%">id</th>
+                <th style="width:20%">companyIdentifier</th>
+                <th style="width:25%">events</th>
+                <th style="width:5%"></th>
+                <th style="width:5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Data)
+            {
+                <tr>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="Lo" asp-action="@{
+                        @((@item.id).Split('/')[(@item.id).Split('/').Length - 1].Split('_')[0])
+ }" asp-route-LoId="@item.id">@item.id </a></td>
+                    <td>@item.companyIdentifier</td>
+                    <td>
+                        @if (item.events != null)
+                        {
+                            @foreach (var ets in item.events)
+                            {
+                                @ets.eventCode <span>:</span> @ets.id <br>
+                            }
+                        }
+                        else
+                        {
+                            <span>No Content</span>
+                        }
+                    </td>
+                    <td><a class="nav-link " asp-area="" asp-controller="Lo" asp-action="EventIndex" asp-route-LoId="@item.id">事件</a></td>
+                    <td><a class="nav-link " asp-controller="Lo" asp-action="ShowLD" asp-route-LoId="@item.id">JSONLD</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+@if (ViewBag.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
+

@@ -1,0 +1,10 @@
+D:\代码\OneRecordText\OneRecordText\bin\Release\netcoreapp3.1\OneRecordText.deps.json
+D:\代码\OneRecordText\OneRecordText\bin\Release\netcoreapp3.1\OneRecordText.dll
+D:\代码\OneRecordText\OneRecordText\bin\Release\netcoreapp3.1\OneRecordText.pdb
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.csproj.AssemblyReference.cache
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.GeneratedMSBuildEditorConfig.editorconfig
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.AssemblyInfoInputs.cache
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.AssemblyInfo.cs
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.csproj.CoreCompileInputs.cache
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.dll
+D:\代码\OneRecordText\OneRecordText\obj\Release\netcoreapp3.1\OneRecordText.pdb

@@ -1,0 +1,7 @@
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.csproj.AssemblyReference.cache
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.GeneratedMSBuildEditorConfig.editorconfig
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.AssemblyInfoInputs.cache
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.AssemblyInfo.cs
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.csproj.CoreCompileInputs.cache
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.MvcApplicationPartsAssemblyInfo.cache
+D:\代码\OneRecordText\OneRecordApiNew\obj\Debug\net5.0\OneRecordApiNew.MvcApplicationPartsAssemblyInfo.cs

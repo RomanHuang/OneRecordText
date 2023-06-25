@@ -1,0 +1,119 @@
+﻿@model OneRecordText.Model.OneRecord.LogisticsEvent
+
+@{
+    ViewData["Title"] = "Event";
+}
+
+<h1>Event</h1>
+
+<h4>Event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="EventAdd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display:none">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateTime" class="control-label">事件执行时间</label>
+                <input asp-for="dateTime" class="form-control" />
+                <span asp-validation-for="dateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eventCode" class="control-label">事件代码</label>
+                <input asp-for="eventCode" class="form-control" />
+                <span asp-validation-for="eventCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eventName" class="control-label">事件名称</label>
+                <input asp-for="eventName" class="form-control" />
+                <span asp-validation-for="eventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eventTypeIndicator" class="control-label">事件类型</label>
+                <select asp-for="eventTypeIndicator" class="form-control">
+                    <option value="Scheduled">计划</option>
+                    <option value="Estimated">估计</option>
+                    <option value="Actual">实际</option>
+                </select>
+                @*<select asp-for="eventTypeIndicator" class="form-control" />*@
+                <span asp-validation-for="eventTypeIndicator" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">物流对象</label>
+                <textarea name="jsonlinkedObject" id="jsonlinkedObject" class="control-label" style="width: 100%;height: 200px;">@ViewBag.textareas</textarea>
+            </div>
+            <div class="form-group">
+                <label class="control-label">对象类型</label>
+                <select name="ldObject" id="ldObject" class="control-label" onchange="ldObjectSelect()">
+                    <option value="">请选择</option>
+                    <option value="Piece">Piece</option>
+                    <option value="Waybill">Waybill</option>
+                    <option value="SpecialHandling">SpecialHandling</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @if (ViewBag.user != "游客") { 
+                <input type="submit" value="EventAdd" asp-action="EventAdd" asp-route-loId="@ViewBag.Id" class="btn btn-primary" />
+                }
+                    
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="EventIndex">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        var types = '@ViewBag.types';
+
+        // 在这里编写您的 JavaScript 代码
+        // 例如：
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            document.getElementById("ldObject").value = types;
+
+        });
+
+        function ldObjectSelect() {
+            var selectElement = document.querySelector("select[name='ldObject']");
+            console.log(selectElement);
+            console.log(selectElement.value);
+            var selectedValue = selectElement.value;
+            if (selectedValue == "Piece") {
+                var textareaElement = document.getElementById("jsonlinkedObject");
+                textareaElement.value = "{\r\n  \"https://onerecord.iata.org/Piece#containedItems\": [],\r\n  \"https://onerecord.iata.org/Piece#containedPieces\": null,\r\n  \"https://onerecord.iata.org/Piece#customsInfo\": null,\r\n  \"https://onerecord.iata.org/Piece#dimensions\": null,\r\n  \"https://onerecord.iata.org/Piece#externalReferences\": null,\r\n  \"https://onerecord.iata.org/Piece#grossWeight\": null,\r\n  \"https://onerecord.iata.org/Piece#handlingInstructions\": [\r\n    {\r\n      \"@@id\": null,\r\n      \"@@type\": [\r\n        \"https://onerecord.iata.org/HandlingInstructions\"\r\n      ],\r\n      \"https://onerecord.iata.org/HandlingInstructions#requestedBy\": null,\r\n      \"https://onerecord.iata.org/HandlingInstructions#serviceDescription\": null,\r\n      \"https://onerecord.iata.org/HandlingInstructions#serviceType\": null,\r\n      \"https://onerecord.iata.org/HandlingInstructions#serviceTypeCode\": null\r\n    }\r\n  ],\r\n  \"https://onerecord.iata.org/Piece#otherIdentifiers\": null,\r\n  \"https://onerecord.iata.org/Piece#otherParty\": null,\r\n  \"https://onerecord.iata.org/Piece#packagingType\": null,\r\n  \"https://onerecord.iata.org/Piece#parties\": null,\r\n  \"https://onerecord.iata.org/Piece#product\": null,\r\n  \"https://onerecord.iata.org/Piece#productionCountry\": null,\r\n  \"https://onerecord.iata.org/Piece#securityDeclaration\": null,\r\n  \"https://onerecord.iata.org/Piece#securityStatus\": null,\r\n  \"https://onerecord.iata.org/Piece#serviceRequest\": null,\r\n  \"https://onerecord.iata.org/Piece#shipment\": null,\r\n  \"https://onerecord.iata.org/Piece#shipper\": null,\r\n  \"https://onerecord.iata.org/Piece#specialHandling\": null,\r\n  \"https://onerecord.iata.org/Piece#transportMovements\": null,\r\n  \"https://onerecord.iata.org/Piece#transportSegments\": null,\r\n  \"https://onerecord.iata.org/Piece#uldReference\": null,\r\n  \"https://onerecord.iata.org/Piece#volumetricWeight\": null,\r\n  \"https://onerecord.iata.org/Piece#coload\": false,\r\n  \"https://onerecord.iata.org/Piece#declaredValueForCarriage\": null,\r\n  \"https://onerecord.iata.org/Piece#declaredValueForCustoms\": null,\r\n  \"https://onerecord.iata.org/Piece#goodsDescription\": null,\r\n  \"https://onerecord.iata.org/Piece#loadType\": null,\r\n  \"https://onerecord.iata.org/Piece#nvdForCarriage\": false,\r\n  \"https://onerecord.iata.org/Piece#nvdForCustoms\": false,\r\n  \"https://onerecord.iata.org/Piece#packageMarkCoded\": null,\r\n  \"https://onerecord.iata.org/Piece#packagedeIdentifier\": null,\r\n  \"https://onerecord.iata.org/Piece#shippingMarks\": null,\r\n  \"https://onerecord.iata.org/Piece#slac\": null,\r\n  \"https://onerecord.iata.org/Piece#stackable\": false,\r\n  \"https://onerecord.iata.org/Piece#turnable\": false,\r\n  \"https://onerecord.iata.org/Piece#upid\": null,\r\n  \"@@id\": null,\r\n  \"@@type\": [\r\n    \"https://onerecord.iata.org/Piece\"\r\n  ],\r\n  \"https://onerecord.iata.org/LogisticsObject#companyIdentifier\": null,\r\n  \"https://onerecord.iata.org/LogisticsObject#events\": null,\r\n  \"https://onerecord.iata.org/Sensor#iotDevice\": null\r\n}";
+
+            } else if (selectedValue == "Waybill") {
+                var textareaElement = document.getElementById("jsonlinkedObject");
+                textareaElement.value = "{\r\n  \"https://onerecord.iata.org/Waybill#booking\": null,\r\n  \"https://onerecord.iata.org/Waybill#carrierDeclarationPlace\": null,\r\n  \"https://onerecord.iata.org/Waybill#containedWaybills\": [\r\n    {\r\n      \"https://onerecord.iata.org/Waybill#booking\": null,\r\n      \"https://onerecord.iata.org/Waybill#carrierDeclarationPlace\": null,\r\n      \"https://onerecord.iata.org/Waybill#containedWaybills\": null,\r\n      \"https://onerecord.iata.org/Waybill#accountingInformation\": null,\r\n      \"https://onerecord.iata.org/Waybill#carrierDeclarationDate\": null,\r\n      \"https://onerecord.iata.org/Waybill#carrierDeclarationSignature\": null,\r\n      \"https://onerecord.iata.org/Waybill#consignorDeclarationSignature\": null,\r\n      \"https://onerecord.iata.org/Waybill#customsOriginCode\": null,\r\n      \"https://onerecord.iata.org/Waybill#destinationCharges\": null,\r\n      \"https://onerecord.iata.org/Waybill#destinationCurrencyCode\": null,\r\n      \"https://onerecord.iata.org/Waybill#destinationCurrencyRate\": 0.0,\r\n      \"https://onerecord.iata.org/Waybill#optionalShippingInfo\": null,\r\n      \"https://onerecord.iata.org/Waybill#optionalShippingRefNo\": null,\r\n      \"https://onerecord.iata.org/Waybill#originCurrency\": null,\r\n      \"https://onerecord.iata.org/Waybill#waybillNumber\": null,\r\n      \"https://onerecord.iata.org/Waybill#waybillPrefix\": null,\r\n      \"https://onerecord.iata.org/Waybill#waybillType\": null,\r\n      \"@@id\": null,\r\n      \"@@type\": [\r\n        \"https://onerecord.iata.org/Waybill\"\r\n      ],\r\n      \"https://onerecord.iata.org/LogisticsObject#companyIdentifier\": null,\r\n      \"https://onerecord.iata.org/LogisticsObject#events\": null,\r\n      \"https://onerecord.iata.org/Sensor#iotDevice\": null\r\n    }\r\n  ],\r\n  \"https://onerecord.iata.org/Waybill#accountingInformation\": null,\r\n  \"https://onerecord.iata.org/Waybill#carrierDeclarationDate\": null,\r\n  \"https://onerecord.iata.org/Waybill#carrierDeclarationSignature\": null,\r\n  \"https://onerecord.iata.org/Waybill#consignorDeclarationSignature\": null,\r\n  \"https://onerecord.iata.org/Waybill#customsOriginCode\": null,\r\n  \"https://onerecord.iata.org/Waybill#destinationCharges\": null,\r\n  \"https://onerecord.iata.org/Waybill#destinationCurrencyCode\": null,\r\n  \"https://onerecord.iata.org/Waybill#destinationCurrencyRate\": 0.0,\r\n  \"https://onerecord.iata.org/Waybill#optionalShippingInfo\": null,\r\n  \"https://onerecord.iata.org/Waybill#optionalShippingRefNo\": null,\r\n  \"https://onerecord.iata.org/Waybill#originCurrency\": null,\r\n  \"https://onerecord.iata.org/Waybill#waybillNumber\": null,\r\n  \"https://onerecord.iata.org/Waybill#waybillPrefix\": null,\r\n  \"https://onerecord.iata.org/Waybill#waybillType\": null,\r\n  \"@@id\": null,\r\n  \"@@type\": [\r\n    \"https://onerecord.iata.org/Waybill\"\r\n  ],\r\n  \"https://onerecord.iata.org/LogisticsObject#companyIdentifier\": null,\r\n  \"https://onerecord.iata.org/LogisticsObject#events\": null,\r\n  \"https://onerecord.iata.org/Sensor#iotDevice\": null\r\n}";
+
+            } else if (selectedValue == "SpecialHandling") {
+                var textareaElement = document.getElementById("jsonlinkedObject");
+                textareaElement.value = "{\r\n  \"https://onerecord.iata.org/SpecialHandling#code\": null,\r\n  \"https://onerecord.iata.org/SpecialHandling#handlingText\": null,\r\n  \"@@id\": null,\r\n  \"@@type\": [\r\n    \"https://onerecord.iata.org/SpecialHandling\"\r\n  ],\r\n  \"https://onerecord.iata.org/LogisticsObject#companyIdentifier\": null,\r\n  \"https://onerecord.iata.org/LogisticsObject#events\": null,\r\n  \"https://onerecord.iata.org/Sensor#iotDevice\": null\r\n}";
+            }
+            else {
+                var textareaElement = document.getElementById("jsonlinkedObject");
+                textareaElement.value = "";
+            }
+
+        }
+
+    </script>
+
+}
+
+

@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OneRecordAPI</name>
+    </assembly>
+    <members>
+        <member name="T:OneRecordAPI.Controllers.LoController">
+            <summary>
+            物流对象控制器
+            </summary>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.PostPiece(OneRecordText.Model.OneRecord.Piece,System.String)">
+            <summary>
+            新增Piece物流对象
+            </summary>
+            <param name="piece"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.PostULD(OneRecordText.Model.OneRecord.ULD,System.String)">
+            <summary>
+            新增ULD物流对象
+            </summary>
+            <param name="uld"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.PostShipment(OneRecordText.Model.OneRecord.Shipment,System.String)">
+            <summary>
+            新增Shipment物流对象
+            </summary>
+            <param name="shipment"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.PostWaybill(OneRecordText.Model.OneRecord.Waybill,System.String)">
+            <summary>
+            新增Waybill物流对象,并将booking信息添加enent
+            </summary>
+            <param name="waybill"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.PostBookingOption(OneRecordText.Model.OneRecord.BookingOption,System.String)">
+            <summary>
+            新增BookingOption物流对象
+            </summary>
+            <param name="booking"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.PostEvent(OneRecordText.Model.OneRecord.Event,System.String)">
+            <summary>
+            新增事件
+            </summary>
+            <param name="ent">事件</param>
+            <param name="loId">对象id</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.GetLoEvent(System.String)">
+            <summary>
+            获取LO的Event集合信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.GetLoAllInfo(System.String)">
+            <summary>
+            获取所有LO的基本信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.GetLoInfo(System.String)">
+            <summary>
+            获取LO的信息
+            </summary>
+            <param name="LoId">ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Controllers.LoController.GetJsonLd(System.String)">
+            <summary>
+            获取jsonld
+            </summary>
+            <param name="loId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Data.ResultToJson.toJson(System.Object)">
+            <summary>
+            用于返回Json类型
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordAPI.Data.ResultToJson.toFile(System.IO.MemoryStream,System.String)">
+            <summary>
+            用于返回文件流类型
+            </summary>
+            <param name="stream">文件流</param>
+            <param name="fileName">文件名</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

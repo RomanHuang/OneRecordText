@@ -1,0 +1,144 @@
+﻿@model IEnumerable<OneRecordMVC.Models.WarehouseInfo>
+@{
+    ViewData["Title"] = "Warehouse";
+}
+
+<h1>Warehouse</h1>
+
+<div class="warehouse-container">
+    <div class="row">
+        <div class="rack" onclick="AddYuYueInfo('WXP1')">
+            <div class="rack-info">
+                <div>危险品库位1</div>
+                <div class="rack-capacity">容量: 20</div>
+                <div class="rack-quantity" id="WXP1">存放: 0</div>
+            </div>
+        </div>
+        <div class="rack" onclick="AddYuYueInfo('WXP2')">
+            <div class="rack-info">
+                <div>危险品库位2</div>
+                <div class="rack-capacity">容量: 25</div>
+                <div class="rack-quantity" id="WXP2">存放: 0</div>
+            </div>
+        </div>
+        <div class="rack" onclick="AddYuYueInfo('WXP3')">
+            <div class="rack-info">
+                <div>危险品库位3</div>
+                <div class="rack-capacity">容量: 1</div>
+                <div class="rack-quantity" id="WXP3">存放: 0</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="rack" onclick="AddYuYueInfo('SX1')">
+            <div class="rack-info">
+                <div>生鲜库位1</div>
+                <div class="rack-capacity">容量: 10</div>
+                <div class="rack-quantity" id="SX1">存放: 0</div>
+            </div>
+        </div>
+        <div class="rack" onclick="AddYuYueInfo('SX2')">
+            <div class="rack-info">
+                <div>生鲜库位2</div>
+                <div class="rack-capacity">容量: 20</div>
+                <div class="rack-quantity" id="SX2">存放: 0</div>
+            </div>
+        </div>
+        <div class="rack" onclick="AddYuYueInfo('SX3')">
+            <div class="rack-info">
+                <div>生鲜库位3</div>
+                <div class="rack-capacity">容量: 30</div>
+                <div class="rack-quantity" id="SX3">存放: 0</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="rack" onclick="AddYuYueInfo('LK1')">
+            <div class="rack-info">
+                <div>冷库位1</div>
+                <div class="rack-capacity">容量: 10</div>
+                <div class="rack-quantity" id="LK1">存放: 0</div>
+            </div>
+        </div>
+        <div class="rack" onclick="AddYuYueInfo('LK2')">
+            <div class="rack-info">
+                <div>冷库位2</div>
+                <div class="rack-capacity">容量: 10</div>
+                <div class="rack-quantity" id="LK2">存放: 0</div>
+            </div>
+        </div>
+        <div class="rack" onclick="AddYuYueInfo('LK3')">
+            <div class="rack-info">
+                <div>冷库位3</div>
+                <div class="rack-capacity">容量: 10</div>
+                <div class="rack-quantity" id="LK3">存放: 0</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .warehouse-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .rack {
+        width: 200px;
+        height: 100px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .rack-info {
+        text-align: center;
+    }
+
+    .rack-capacity,
+    .rack-quantity {
+        float: left;
+        font-size: 12px;
+        margin-bottom: 5px;
+        padding-left: 10px;
+        padding-top: 15px;
+    }
+</style>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    var user = @Html.Raw(Json.Serialize(ViewBag.user));
+     var data = @Html.Raw(Json.Serialize(ViewBag.data));
+        // 在这里编写您的 JavaScript 代码
+        // 例如：
+        document.addEventListener("DOMContentLoaded", function () {
+
+           for (var i = 0; i < data.length; i++) {
+               var myDiv = document.getElementById(data[i].warehouseLocation);
+      /*         console.log(data[i]);*/
+               myDiv.parentNode.parentNode.setAttribute("title", data[i].loids);
+               // 修改 div 内容
+               myDiv.innerHTML = "存放: " + data[i].sum;
+                }
+
+        });
+
+    function AddYuYueInfo(Location) {
+        if (user == "游客") return;
+
+            window.location.href = '@Url.Action("YuYue", "Lo")?Location=' + encodeURIComponent(Location);
+        }
+
+</script>
+
+}

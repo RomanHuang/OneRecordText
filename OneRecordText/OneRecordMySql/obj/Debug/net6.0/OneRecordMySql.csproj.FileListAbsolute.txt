@@ -1,0 +1,12 @@
+D:\代码\OneRecordText\OneRecordMySql\bin\Debug\net6.0\OneRecordMySql.deps.json
+D:\代码\OneRecordText\OneRecordMySql\bin\Debug\net6.0\OneRecordMySql.dll
+D:\代码\OneRecordText\OneRecordMySql\bin\Debug\net6.0\OneRecordMySql.pdb
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.csproj.AssemblyReference.cache
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.GeneratedMSBuildEditorConfig.editorconfig
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.AssemblyInfoInputs.cache
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.AssemblyInfo.cs
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.csproj.CoreCompileInputs.cache
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.dll
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\refint\OneRecordMySql.dll
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\OneRecordMySql.pdb
+D:\代码\OneRecordText\OneRecordMySql\obj\Debug\net6.0\ref\OneRecordMySql.dll

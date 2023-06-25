@@ -1,0 +1,63 @@
+﻿@model OneRecordMVC.Models.AddYuYueInfo
+
+@{
+    ViewData["Title"] = "YuYue";
+}
+
+<h1>YuYue</h1>
+
+<h4>AddYuYueInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddYuYue">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="waybillNumber" class="control-label">运单号</label>
+                <input asp-for="waybillNumber" class="form-control" />
+                <span asp-validation-for="waybillNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="waybillPrefix" class="control-label">运单前缀</label>
+                <input asp-for="waybillPrefix" class="form-control" />
+                <span asp-validation-for="waybillPrefix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="waybillType" class="control-label">运单类型</label>
+                <select asp-for="waybillType" class="form-control">
+                    <option value="House">房屋</option>
+                    <option value="Direct">直接</option>
+                    <option value="Master">主运单</option>
+                </select>
+                <span asp-validation-for="waybillType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SHC" class="control-label">SHC</label>
+                <select asp-for="SHC" class="form-control">
+                    @foreach (var item in ViewBag.SHClIST){
+                        <option value="@item">@item</option>
+                    }
+                </select>
+                <span asp-validation-for="SHC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="handlingText" class="control-label">特殊处理文本</label>
+                <input asp-for="handlingText" class="form-control"  />
+                <span asp-validation-for="handlingText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label">预约库位</label>
+                <input asp-for="Location" class="form-control" readonly />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

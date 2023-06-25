@@ -1,0 +1,205 @@
+﻿@model OneRecordText.Model.OneRecord.Piece
+
+@{
+    ViewData["Title"] = "Piece";
+}
+
+<h1>Piece</h1>
+
+<h4>Piece</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddPiece">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="coload" /> 工件的颜色指示器
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="goodsDescription" class="control-label">一般货物描述</label>
+                <input asp-for="goodsDescription" class="form-control" />
+                <span asp-validation-for="goodsDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loadType" class="control-label">交付方式</label>
+                <input asp-for="loadType" class="form-control" />
+                <span asp-validation-for="loadType" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="nvdForCarriage" /> 无Carriage声明值
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="nvdForCustoms" /> 无海关申报价值
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="packageMarkCoded" class="control-label">包装标记方式</label>
+                <input asp-for="packageMarkCoded" class="form-control" />
+                <span asp-validation-for="packageMarkCoded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="packagedeIdentifier" class="control-label">包装标记</label>
+                <input asp-for="packagedeIdentifier" class="form-control" />
+                <span asp-validation-for="packagedeIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="slac" class="control-label">托运人的装载和计数</label>
+                <input asp-for="slac" class="form-control" />
+                <span asp-validation-for="slac" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="stackable" /> 工件的可堆叠指示符
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="turnable" /> 工件的可转动指示器
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="upid" class="control-label">工件标识符</label>
+                <input asp-for="upid" class="form-control" />
+                <span asp-validation-for="upid" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="companyIdentifier" class="control-label">公司标识符</label>
+                <input asp-for="companyIdentifier" class="form-control" />
+                <span asp-validation-for="companyIdentifier" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <table id="HandLingTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>操作说明</th>
+                            <th>处理信息类型</th>
+                            <th>运单类型</th>
+                            <!-- 添加其他表头列 -->
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.handlingInstructions.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input asp-for="@Model.handlingInstructions[i].serviceDescription" class="form-control" />
+                                    <span asp-validation-for="@Model.handlingInstructions[i].serviceDescription" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    @*<input asp-for="@Model.handlingInstructions[i].serviceType" class="form-control" />*@
+                                    <select asp-for="@Model.handlingInstructions[i].serviceType" class="form-control">
+                                        <option value="SSR">特殊服务请求</option>
+                                        <option value="SPH">特殊处理代码</option>
+                                        <option value="OSI">其他服务信息</option>
+                                    </select>
+                                    <span asp-validation-for="@Model.handlingInstructions[i].serviceType" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.handlingInstructions[i].serviceTypeCode" class="form-control" />
+                                    <span asp-validation-for="@Model.handlingInstructions[i].serviceTypeCode" class="text-danger"></span>
+                                </td>
+                                <!-- 添加其他列 -->
+                                <td>
+                                    @if (ViewBag.user != "游客") {<button type="button" class="btn btn-danger" onclick="removeRow(this)">删除</button> }
+                                    
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (ViewBag.user != "游客") { <button type="button" class="btn btn-primary" onclick="addRow()">新增行</button>}
+                
+            </div>
+
+            <div class="form-group">
+                @if (ViewBag.user != "游客")
+                {<input type="submit" value="Create" class="btn btn-primary" />}
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function addRow() {
+            var table = document.getElementById("HandLingTable");
+            var tbody = table.getElementsByTagName("tbody")[0];
+            var newRow = document.createElement("tr");
+
+            var lengths = document.getElementById("HandLingTable").getElementsByTagName("tbody")[0].children.length;
+
+            var property1Cell = document.createElement("td");
+            var property1Input = document.createElement("input");
+            property1Input.setAttribute("name", "handlingInstructions[" + lengths + "].serviceDescription");
+            property1Input.setAttribute("class", "form-control");
+            property1Cell.appendChild(property1Input);
+
+            var property2Cell = document.createElement("td");
+            var property2Input = document.createElement("select");
+            property2Input.setAttribute("name", "handlingInstructions[" + lengths + "].serviceType");
+            property2Input.setAttribute("class", "form-control");
+            var option1 = document.createElement("option");
+            option1.text = "特殊服务请求";
+            option1.value = "SSR";
+            property2Input.add(option1);
+            var option2 = document.createElement("option");
+            option2.text = "特殊处理代码";
+            option2.value = "SPH";
+            property2Input.add(option2);
+            var option3 = document.createElement("option");
+            option3.text = "其他服务信息";
+            option3.value = "OSI";
+            property2Input.add(option3);
+
+            property2Cell.appendChild(property2Input);
+
+            var property3Cell = document.createElement("td");
+            var property3Input = document.createElement("input");
+            property3Input.setAttribute("name", "handlingInstructions[" + lengths + "].serviceTypeCode");
+            property3Input.setAttribute("class", "form-control");
+            property3Cell.appendChild(property3Input);
+            // 添加其他列
+
+            var deleteCell = document.createElement("td");
+            var deleteButton = document.createElement("button");
+            deleteButton.setAttribute("type", "button");
+            deleteButton.setAttribute("class", "btn btn-danger");
+            deleteButton.setAttribute("onclick", "removeRow(this)");
+            deleteButton.innerHTML = "删除";
+            deleteCell.appendChild(deleteButton);
+
+            newRow.appendChild(property1Cell);
+            newRow.appendChild(property2Cell);
+            newRow.appendChild(property3Cell);
+            // 添加其他列
+            newRow.appendChild(deleteCell);
+
+            tbody.appendChild(newRow);
+        }
+
+        function removeRow(button) {
+            var row = button.parentNode.parentNode;
+            var tbody = row.parentNode;
+            tbody.removeChild(row);
+        }
+    </script>
+}

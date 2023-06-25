@@ -1,0 +1,202 @@
+﻿@model OneRecordText.Model.OneRecord.Waybill
+
+@{
+    ViewData["Title"] = "Waybill";
+}
+
+<h1>Waybill</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="accountingInformation" class="control-label">会计信息</label>
+                <input asp-for="accountingInformation" class="form-control" />
+                <span asp-validation-for="accountingInformation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="carrierDeclarationDate" class="control-label">承运人证明日期</label>
+                <input asp-for="carrierDeclarationDate" class="form-control" />
+                <span asp-validation-for="carrierDeclarationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="carrierDeclarationSignature" class="control-label">承运人的身份验证</label>
+                <input asp-for="carrierDeclarationSignature" class="form-control" />
+                <span asp-validation-for="carrierDeclarationSignature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="customsOriginCode" class="control-label">货物原产地代码</label>
+                <input asp-for="customsOriginCode" class="form-control" />
+                <span asp-validation-for="customsOriginCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="destinationCurrencyCode" class="control-label">目的地的ISO</label>
+                <input asp-for="destinationCurrencyCode" class="form-control" />
+                <span asp-validation-for="destinationCurrencyCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="destinationCurrencyRate" class="control-label">转换率</label>
+                <input asp-for="destinationCurrencyRate" class="form-control" />
+                <span asp-validation-for="destinationCurrencyRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="optionalShippingInfo" class="control-label">可选运输</label>
+                <input asp-for="optionalShippingInfo" class="form-control" />
+                <span asp-validation-for="optionalShippingInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="optionalShippingRefNo" class="control-label">发货参考号</label>
+                <input asp-for="optionalShippingRefNo" class="form-control" />
+                <span asp-validation-for="optionalShippingRefNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="originCurrency" class="control-label">来源货币的代码</label>
+                <input asp-for="originCurrency" class="form-control" />
+                <span asp-validation-for="originCurrency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="waybillNumber" class="control-label">主运单唯一标识符</label>
+                <input asp-for="waybillNumber" class="form-control" />
+                <span asp-validation-for="waybillNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="waybillPrefix" class="control-label">运单前缀</label>
+                <input asp-for="waybillPrefix" class="form-control" />
+                <span asp-validation-for="waybillPrefix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="waybillType" class="control-label">运单类型</label>
+                @*<input asp-for="waybillType" class="form-control" />*@
+                <select asp-for="waybillType" class="form-control">
+                    <option value="House">房屋</option>
+                    <option value="Direct">直接</option>
+                    <option value="Master">主运单</option>
+                </select>
+                <span asp-validation-for="waybillType" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none;">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="companyIdentifier" class="control-label">公司标识符</label>
+                <input asp-for="companyIdentifier" class="form-control" />
+                <span asp-validation-for="companyIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <table id="WaybillTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>运单唯一标识符</th>
+                            <th>运单前缀</th>
+                            <th>运单类型</th>
+                            <!-- 添加其他表头列 -->
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.containedWaybills.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input asp-for="@Model.containedWaybills[i].waybillNumber" class="form-control" />
+                                    <span asp-validation-for="@Model.containedWaybills[i].waybillNumber" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.containedWaybills[i].waybillPrefix" class="form-control" />
+                                    <span asp-validation-for="@Model.containedWaybills[i].waybillPrefix" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.containedWaybills[i].waybillType" class="form-control" />
+                                    <span asp-validation-for="@Model.containedWaybills[i].waybillType" class="text-danger"></span>
+                                </td>
+                                <!-- 添加其他列 -->
+                                <td>
+                                    @if (ViewBag.user != "游客")
+                                    {
+                                        <button type="button" class="btn btn-danger" onclick="removeRow(this)">删除</button>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (ViewBag.user != "游客")
+                {
+                    <button type="button" class="btn btn-primary" onclick="addRow()">新增行</button>
+                }
+
+            </div>
+            <div class="form-group">
+                @if (ViewBag.user != "游客")
+                {
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                }
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function addRow() {
+        var table = document.getElementById("WaybillTable");
+        var tbody = table.getElementsByTagName("tbody")[0];
+        var newRow = document.createElement("tr");
+
+        var lengths = document.getElementById("WaybillTable").getElementsByTagName("tbody")[0].children.length;
+
+        var property1Cell = document.createElement("td");
+        var property1Input = document.createElement("input");
+        property1Input.setAttribute("name", "containedWaybills[" + lengths +"].waybillNumber");
+        property1Input.setAttribute("class", "form-control");
+        property1Cell.appendChild(property1Input);
+
+        var property2Cell = document.createElement("td");
+        var property2Input = document.createElement("input");
+        property2Input.setAttribute("name", "containedWaybills[" + lengths +"].waybillPrefix");
+        property2Input.setAttribute("class", "form-control");
+        property2Cell.appendChild(property2Input);
+
+        var property3Cell = document.createElement("td");
+        var property3Input = document.createElement("input");
+        property3Input.setAttribute("name", "containedWaybills[" + lengths +"].waybillType");
+        property3Input.setAttribute("class", "form-control");
+        property3Cell.appendChild(property3Input);
+        // 添加其他列
+
+        var deleteCell = document.createElement("td");
+        var deleteButton = document.createElement("button");
+        deleteButton.setAttribute("type", "button");
+        deleteButton.setAttribute("class", "btn btn-danger");
+        deleteButton.setAttribute("onclick", "removeRow(this)");
+        deleteButton.innerHTML = "删除";
+        deleteCell.appendChild(deleteButton);
+
+        newRow.appendChild(property1Cell);
+        newRow.appendChild(property2Cell);
+        newRow.appendChild(property3Cell);
+        // 添加其他列
+        newRow.appendChild(deleteCell);
+
+        tbody.appendChild(newRow);
+    }
+
+    function removeRow(button) {
+        var row = button.parentNode.parentNode;
+        var tbody = row.parentNode;
+        tbody.removeChild(row);
+    }
+</script>

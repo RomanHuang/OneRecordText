@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OneRecordText.Model.OneRecord.LogisticsEvent>
+
+@{
+    ViewData["Title"] = "EventIndex";
+}
+
+<h1>EventIndex</h1>
+
+<p>
+    @if (ViewBag.user != "游客") { 
+    <a asp-action="Event" asp-route-loId="@ViewBag.Id">Create New</a>
+    }
+        
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                事件id
+            </th>
+            <th>
+                事件日期
+            </th>
+            <th>
+                事件代码
+            </th>
+            <th>
+                事件名称
+            </th>
+            <th>
+                事件类型
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.dateTime)*@
+                @DateTimeOffset.FromUnixTimeMilliseconds((long)item.dateTime).ToString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eventCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eventTypeIndicator)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Event", new { loId = @ViewBag.Id, EventId=item.id /* id=item.PrimaryKey */ }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

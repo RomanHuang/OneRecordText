@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\APIrelease</_PublishTargetUrl>
+    <History>True|2023-06-10T07:22:25.1605225Z;True|2023-06-10T15:15:14.2034688+08:00;True|2023-06-10T15:12:56.2491157+08:00;True|2023-06-10T10:32:04.2907929+08:00;False|2023-06-10T10:31:57.1565150+08:00;True|2023-06-10T10:31:17.9571443+08:00;False|2023-06-10T10:30:45.8591009+08:00;True|2023-06-10T10:05:28.8443756+08:00;True|2023-06-10T08:04:22.6443732+08:00;False|2023-06-10T08:03:23.9914497+08:00;False|2023-06-10T08:01:15.8398738+08:00;False|2023-06-10T08:00:08.6628514+08:00;True|2023-06-07T14:34:00.5765318+08:00;True|2023-06-07T14:33:57.3674512+08:00;False|2023-06-07T14:33:30.7118638+08:00;True|2023-06-07T11:13:06.3964951+08:00;True|2023-06-07T11:12:36.8305682+08:00;True|2023-06-06T17:03:33.7001500+08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

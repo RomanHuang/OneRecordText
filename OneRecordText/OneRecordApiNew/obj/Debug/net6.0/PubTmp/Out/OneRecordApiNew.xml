@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OneRecordApiNew</name>
+    </assembly>
+    <members>
+        <member name="M:OneRecordApiNew.Controllers.FileController.Upload(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.FileController.UploadImage(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传图片
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.FileController.GetAwbImage(System.String)">
+            <summary>
+            获取图片访问路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.FileController.IsImageFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            判断是否为图片
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OneRecordApiNew.Controllers.LoController">
+            <summary>
+            物流对象控制器
+            </summary>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.PostPiece(OneRecordText.Model.OneRecord.Piece,System.String)">
+            <summary>
+            新增Piece物流对象
+            </summary>
+            <param name="piece"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.PostULD(OneRecordText.Model.OneRecord.ULD,System.String)">
+            <summary>
+            新增ULD物流对象
+            </summary>
+            <param name="uld"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.PostShipment(OneRecordText.Model.OneRecord.Shipment,System.String)">
+            <summary>
+            新增Shipment物流对象
+            </summary>
+            <param name="shipment"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.PostWaybill(OneRecordText.Model.OneRecord.Waybill,System.String)">
+            <summary>
+            新增Waybill物流对象,并将booking信息添加enent
+            </summary>
+            <param name="waybill"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.PostBookingOption(OneRecordText.Model.OneRecord.BookingOption,System.String)">
+            <summary>
+            新增BookingOption物流对象
+            </summary>
+            <param name="booking"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.PostEvent(OneRecordText.Model.OneRecord.LogisticsEvent,System.String)">
+            <summary>
+            新增事件
+            </summary>
+            <param name="ent">事件</param>
+            <param name="loId">对象id</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.GetLoByAwb(System.String,System.String)">
+            <summary>
+            根据运单获取Lo
+            </summary>
+            <param name="companyId"></param>
+            <param name="awb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.GetLoEvent(System.String)">
+            <summary>
+            获取LO的Event集合信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.GetLoAllInfo(System.String)">
+            <summary>
+            获取所有LO的基本信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.GetLoInfo(System.String)">
+            <summary>
+            获取LO的信息
+            </summary>
+            <param name="LoId">ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.LoController.GetJsonLd(System.String)">
+            <summary>
+            获取jsonld
+            </summary>
+            <param name="loId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.QRCodeController.GenerateQRCode(System.String)">
+            <summary>
+            生成二维码
+            </summary>
+            <param name="loId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.QRCodeController.VisPhone(System.String,System.String)">
+            <summary>
+            校验手机号接口
+            </summary>
+            <param name="loId">IDURL</param>
+            <param name="phone">手机号</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.ShipmentController.PostShipment(OneRecordApiNew.Data.Model.ShipmentModel,System.String)">
+            <summary>
+            新增Shipment对象
+            </summary>
+            <param name="sm"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OneRecordApiNew.Controllers.TransportController">
+            <summary>
+            航空器api
+            </summary>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.TransportController.PostTransportMeans(OneRecordApiNew.Data.Model.TransportMeansModel,System.String)">
+            <summary>
+            新增TransportMeans对象
+            </summary>
+            <param name="ts"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OneRecordApiNew.Controllers.WaybillController">
+            <summary>
+            waybill控制器
+            </summary>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.PostWaybillMeans(OneRecordApiNew.Data.Model.WaybillModel)">
+            <summary>
+            新增Watbill对象
+            </summary>
+            <param name="wb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.query(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            查询运单列表
+            </summary>
+            <param name="awb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.GetLoInfo(System.String)">
+            <summary>
+            获取Waybill的详情信息 jsonld
+            </summary>
+            <param name="LoId">ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.GetLoInfoByLoid(System.String)">
+            <summary>
+            获取Waybill的详情信息
+            </summary>
+            <param name="LoId">ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.PostEvent(OneRecordText.Model.OneRecord.LogisticsEvent,System.String)">
+            <summary>
+            新增事件
+            </summary>
+            <param name="ent">事件</param>
+            <param name="loId">对象id</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.PostMWaybillModel(OneRecordApiNew.Data.Model.MWaybillModel)">
+            <summary>
+            绑定主运单信息
+            </summary>
+            <param name="wb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.PostRIWEvent(OneRecordApiNew.Data.Model.PhoneModel)">
+            <summary>
+            RIW事件新增手机号
+            </summary>
+            <param name="phoneModel">事件</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.PostTPNEvent(OneRecordApiNew.Data.Model.PostEventModel)">
+            <summary>
+            TPN事件新增手机号
+            </summary>
+            <param name="phoneModel">事件</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.PostPODEvent(OneRecordApiNew.Data.Model.PostEventModel)">
+            <summary>
+            TPN事件新增手机号
+            </summary>
+            <param name="phoneModel">事件</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Controllers.WaybillController.GetLoEvent(System.String)">
+            <summary>
+            获取LO的Event集合信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.BookingOptionModel.carrier">
+            <summary>
+            运营商详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.BookingOptionModel.offerValidFrom">
+            <summary>
+            开始日期预订选项的可用时间
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.BookingOptionModel.offerValidTo">
+            <summary>
+            预订选项可用性的结束日期时间
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.MWaybillModel.waybillNumber">
+            <summary>
+            房屋或主运单唯一标识符
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.MWaybillModel.waybillPrefix">
+            <summary>
+            用于运单编号的前缀。参考IATA航空公司代码
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.MWaybillModel.waybillType">
+            <summary>
+            运单类型：房屋、直接或主运单 House, Direct or Master
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.MWaybillModel.goodsDescription">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PhoneModel.IdUrl">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PhoneModel.Phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PostEventModel.IdUrl">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PieceModel.dimensions">
+            <summary>
+            尺寸详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PieceModel.grossWeight">
+            <summary>
+            重量详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PieceModel.specialHandling">
+            <summary>
+            特殊处理细节
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PieceModel.volumetricWeight">
+            <summary>
+            体积重量详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.PieceModel.transportMovements">
+            <summary>
+            运输工件的移动
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.containedPieces">
+            <summary>
+            包含部件的详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.deliveryLocation">
+            <summary>
+            适用交货条款要求的出发点或港口、装运地或目的地的名称和UN/LOCODE代码
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.dimensions">
+            <summary>
+            尺寸详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.totalGrossWeight">
+            <summary>
+            重量详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.volumetricWeight">
+            <summary>
+            体积重量详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.waybillNumber">
+            <summary>
+            运单唯一标识符（AWB或HWB）
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.deliveryDate">
+            <summary>
+            交货日期。格式为YYYYMMDD。
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.goodsDescription">
+            <summary>
+            一般货物描述
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.totalPieceCount">
+            <summary>
+            总件数
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.ShipmentModel.totalSLAC">
+            <summary>
+            所有工件组的总SLAC
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.SpecialHandlingModel.code">
+            <summary>
+            符合IATA标准的特殊处理代码。参考CXML1.16，例如PEP——水果和蔬菜
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.SpecialHandlingModel.handlingText">
+            <summary>
+            特殊处理文本
+            </summary>
+        </member>
+        <member name="T:OneRecordApiNew.Data.Model.TransportMeansModel">
+            <summary>
+            航班器信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.TransportMeansModel.vehicleModel">
+            <summary>
+            车辆型号或品牌（例如A330-300）飞机型号
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.TransportMeansModel.vehicleRegistration">
+            <summary>
+            车辆识别-例如飞机注册号 航班号
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.TransportMeansModel.arrivalLocation">
+            <summary>
+            到达地点详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.TransportMeansModel.departureLocation">
+            <summary>
+            出发地点详细信息
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.TransportMeansModel.movementTimes">
+            <summary>
+            参考所有移动时间，如出发、到达等。
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.waybillNumber">
+            <summary>
+            房屋或主运单唯一标识符
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.waybillPrefix">
+            <summary>
+            用于运单编号的前缀。参考IATA航空公司代码
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.waybillType">
+            <summary>
+            运单类型：房屋、直接或主运单 House, Direct or Master
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.shipmentOfPieces">
+            <summary>
+            件数集合
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.deliveryLocation">
+            <summary>
+            交货地点
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.totalDimensions">
+            <summary>
+            总尺寸
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.totalGrossWeight">
+            <summary>
+            总重量
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.totalVolumetricWeight">
+            <summary>
+            总体积重量
+            </summary>
+        </member>
+        <member name="P:OneRecordApiNew.Data.Model.WaybillModel.goodsDescription">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="M:OneRecordApiNew.Data.ResultToJson.toJson(System.Object)">
+            <summary>
+            用于返回Json类型
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRecordApiNew.Data.ResultToJson.toFile(System.IO.MemoryStream,System.String)">
+            <summary>
+            用于返回文件流类型
+            </summary>
+            <param name="stream">文件流</param>
+            <param name="fileName">文件名</param>
+            <returns></returns>
+        </member>
+        <member name="P:OneRecordApiNew.Data.returnModel.returnWaybillText.iataCargoAgentCode">
+            <summary>
+            国际航空运输协会认可的货运代理7位数字
+            </summary>
+        </member>
+    </members>
+</doc>
